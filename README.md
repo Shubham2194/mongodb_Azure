@@ -1,5 +1,9 @@
 # mongodb_Azure
 
+
+![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/ebda7ff5-4fac-4026-8bf9-5f6834326467)
+
+
 Step 1: 
 
 az group create --name myResourceGroup --location eastus
@@ -15,23 +19,35 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Step 4: Create a Strorage Class (DYnamic provisioning)
 
-![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/c6394b1f-5244-40c5-ab4b-448d3d31e269)
+![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/27c68386-8dca-40b9-9a35-5bcad221c690)
+
 
 kubectl apply -f storage-class.yaml
 
-Step 5: Create PVC
+Step 5: Create Secrets
 
-![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/e0aea836-9e5c-4919-919f-6818858405fe)
+![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/6f8dbc36-ea4f-4c2f-ad9b-a36d4c7bbc44)
 
-kubectl apply -f mongo-pvc.yaml
+
+kubectl apply -f secret.yaml
+
 
 Step 6: Deploy MongoDB with StatefulSet
 
-kubectl apply -f mongo-statefulset.yaml
+![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/10ddfa48-535c-4452-84db-78f3e1c80796)
 
-Step 7: 
+
+kubectl apply -f mongodb-deploy.yaml
+
+Step 7: Expose mongoDB
+
+![image](https://github.com/Shubham2194/mongodb_Azure/assets/83746560/9bf5f3d2-60d1-4503-b848-6967264a81b9)
+
+kubectl apply -f svc.yaml
 
 kubectl get all
 
-Mongodb with one replica deployed on AKS :)
+
+
+Mongodb with one replica deployed having persistent volume of 20Gi on AKS :)
 
